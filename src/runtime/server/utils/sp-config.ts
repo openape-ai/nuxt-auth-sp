@@ -1,4 +1,6 @@
 import type { H3Event } from 'h3'
+import { useSession } from 'h3'
+import { useRuntimeConfig } from 'nitropack/runtime'
 import type { AuthFlowState } from '@openape/core'
 
 const FLOW_COOKIE = 'openape-flow'

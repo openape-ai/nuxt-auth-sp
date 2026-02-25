@@ -1,4 +1,6 @@
+import { defineEventHandler, getRequestURL } from 'h3'
 import { createSPManifest } from '@openape/auth'
+import { getSpConfig } from '../../utils/sp-config'
 
 export default defineEventHandler((event) => {
   const { spId, spName } = getSpConfig()

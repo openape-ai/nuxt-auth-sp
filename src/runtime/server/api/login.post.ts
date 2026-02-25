@@ -1,4 +1,6 @@
+import { createError, defineEventHandler, getRequestURL, readBody } from 'h3'
 import { createAuthorizationURL, discoverIdP } from '@openape/auth'
+import { getSpConfig, saveFlowState } from '../utils/sp-config'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<{ email: string }>(event)

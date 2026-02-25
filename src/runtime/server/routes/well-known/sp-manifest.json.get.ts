@@ -7,6 +7,6 @@ export default defineEventHandler((event) => {
     sp_id: spId,
     name: spName,
     redirect_uris: [`${origin}/api/callback`],
-    description: `${spName} — OpenAPE Service Provider`,
+    description: `${spName} — OpenApe Service Provider`,
   })
 })

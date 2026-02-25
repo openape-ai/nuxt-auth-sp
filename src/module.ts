@@ -15,7 +15,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     spId: '',
-    spName: 'OpenAPE Service Provider',
+    spName: 'OpenApe Service Provider',
     sessionSecret: 'change-me-sp-secret-at-least-32-chars-long',
     openapeUrl: '',
   },

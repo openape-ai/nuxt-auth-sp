@@ -8,7 +8,7 @@ export function getSpConfig() {
   return {
     spId: config.openapeSp.spId || 'sp.example.com',
     openapeUrl: config.openapeSp.openapeUrl || '',
-    spName: config.openapeSp.spName || 'OpenAPE Service Provider',
+    spName: config.openapeSp.spName || 'OpenApe Service Provider',
   }
 }
 

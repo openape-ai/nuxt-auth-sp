@@ -1,9 +1,9 @@
 {
   "name": "@openape/nuxt-auth-sp",
   "type": "module",
-  "version": "0.1.4",
-  "description": "OpenApe Service Provider Nuxt module — adds OIDC login via DNS-based IdP discovery",
-  "author": "Patrick Hofmann",
+  "version": "0.1.5",
+  "description": "OpenAPE Service Provider Nuxt module — adds OIDC login via DNS-based IdP discovery",
+  "author": "Delta Mind GmbH",
   "license": "MIT",
   "exports": {
     ".": {
@@ -23,10 +23,9 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.16.0",
-    "@openape/auth": "^0.1.0",
-    "@openape/core": "^0.1.0",
-    "defu": "^6.1.4",
-    "h3": "^1.15.0"
+    "@openape/auth": "workspace:*",
+    "@openape/core": "workspace:*",
+    "defu": "^6.1.4"
   },
   "peerDependencies": {
     "nuxt": "^4.0.0"
@@ -35,12 +34,5 @@
     "@nuxt/module-builder": "^0.8.4",
     "nuxt": "^4.3.1",
     "typescript": "^5.7.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/openape-ai/nuxt-auth-sp.git"
   }
 }

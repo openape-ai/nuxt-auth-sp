@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
   // Use configured IdP URL (dev/test) or discover via DNS
   let idpConfig
   if (openapeUrl) {
-    idpConfig = { idpUrl: openapeUrl, record: { idp: openapeUrl } }
+    idpConfig = { idpUrl: openapeUrl, record: { version: 'ddisa1', idp: openapeUrl, raw: `v=ddisa1; idp=${openapeUrl}` } }
   } else {
     idpConfig = await discoverIdP(email)
   }

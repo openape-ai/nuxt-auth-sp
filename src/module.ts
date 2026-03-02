@@ -26,7 +26,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.runtimeConfig.openapeSp = defu(
       nuxt.options.runtimeConfig.openapeSp as Record<string, unknown> || {},
       options,
-    )
+    ) as typeof options
 
     // Register server utils (auto-imported by Nitro)
     addServerImportsDir(resolve('./runtime/server/utils'))

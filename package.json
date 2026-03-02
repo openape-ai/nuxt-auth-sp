@@ -19,12 +19,13 @@
   "scripts": {
     "build": "nuxt-module-build build",
     "dev": "nuxt-module-build build --stub",
-    "typecheck": "tsc --noEmit"
+    "prepare": "nuxi prepare playground",
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/kit": "^3.16.0",
-    "@openape/auth": "workspace:*",
-    "@openape/core": "workspace:*",
+    "@openape/auth": "^0.1.2",
+    "@openape/core": "^0.1.2",
     "defu": "^6.1.4"
   },
   "peerDependencies": {
@@ -32,7 +33,9 @@
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.8.4",
+    "@types/node": "^22.0.0",
     "nuxt": "^4.3.1",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vue-tsc": "^3.2.0"
   }
 }

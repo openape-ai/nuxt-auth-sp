@@ -6,6 +6,7 @@ export interface ModuleOptions {
   spName: string
   sessionSecret: string
   openapeUrl: string
+  fallbackIdpUrl: string
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -18,6 +19,7 @@ export default defineNuxtModule<ModuleOptions>({
     spName: 'OpenApe Service Provider',
     sessionSecret: 'change-me-sp-secret-at-least-32-chars-long',
     openapeUrl: '',
+    fallbackIdpUrl: 'https://id.openape.at',
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -28,13 +30,16 @@ export default defineNuxtModule<ModuleOptions>({
       options,
     ) as typeof options
 
-    // Register server utils (auto-imported by Nitro)
+    // Register server utils (available via #imports or auto-import)
     addServerImportsDir(resolve('./runtime/server/utils'))
 
     // Register composables (auto-imported by Vue)
     addImportsDir(resolve('./runtime/composables'))
 
-    // Server route handlers
+    // Register server handlers directly.
+    // All handlers use explicit h3 imports so they work with or without auto-imports.
+    // Consumer projects should add @openape/nuxt-auth-sp to nitro.externals.inline
+    // and set nitro.imports.autoImport = false for reliable Vercel deployments.
     addServerHandler({ route: '/api/login', method: 'post', handler: resolve('./runtime/server/api/login.post') })
     addServerHandler({ route: '/api/callback', handler: resolve('./runtime/server/api/callback.get') })
     addServerHandler({ route: '/api/logout', method: 'post', handler: resolve('./runtime/server/api/logout.post') })

@@ -11,6 +11,7 @@ export function getSpConfig() {
     spId: config.openapeSp.spId || 'sp.example.com',
     openapeUrl: config.openapeSp.openapeUrl || '',
     spName: config.openapeSp.spName || 'OpenApe Service Provider',
+    fallbackIdpUrl: config.openapeSp.fallbackIdpUrl || 'https://id.openape.at',
   }
 }
 

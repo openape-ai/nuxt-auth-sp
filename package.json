@@ -1,7 +1,7 @@
 {
   "name": "@openape/nuxt-auth-sp",
   "type": "module",
-  "version": "0.1.5",
+  "version": "0.1.9",
   "description": "OpenAPE Service Provider Nuxt module — adds OIDC login via DNS-based IdP discovery",
   "author": "Delta Mind GmbH",
   "license": "AGPL-3.0-or-later",
@@ -28,24 +28,25 @@
     "release": "npm pack --dry-run && npm publish --provenance --access public"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.16.0",
+    "@nuxt/kit": "^3.21.1",
     "@openape/auth": "^0.1.2",
     "@openape/core": "^0.1.2",
+    "@openape/nuxt-auth-sp": "0.1.9",
     "defu": "^6.1.4"
   },
   "peerDependencies": {
     "nuxt": "^4.0.0"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.8.4",
-    "@types/node": "^22.0.0",
-    "nuxt": "^4.3.1",
-    "typescript": "^5.7.0",
-    "vue-tsc": "^3.2.0",
     "@antfu/eslint-config": "^7.6.1",
-    "eslint": "^9.35.0",
+    "@changesets/cli": "^2.30.0",
+    "@nuxt/module-builder": "^0.8.4",
+    "@types/node": "^22.19.13",
+    "eslint": "^9.39.3",
+    "nuxt": "^4.3.1",
+    "typescript": "^5.9.3",
     "vitest": "^3.2.4",
-    "@changesets/cli": "^2.29.7"
+    "vue-tsc": "^3.2.5"
   },
   "engines": {
     "node": ">=22"

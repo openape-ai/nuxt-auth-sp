@@ -4,7 +4,7 @@ import { getSpConfig, saveFlowState } from '../utils/sp-config'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<{ email: string }>(event)
-  const { spId, openapeUrl } = getSpConfig()
+  const { spId, openapeUrl, fallbackIdpUrl } = getSpConfig()
   const origin = getRequestURL(event).origin
   const redirectUri = `${origin}/api/callback`
 
@@ -15,12 +15,12 @@ export default defineEventHandler(async (event) => {
   const email = body.email.trim()
   const domain = email.split('@')[1]
 
-  // Use configured IdP URL (dev/test) or discover via DNS
+  // Use configured IdP URL (dev/test) or discover via DNS (with fallback)
   let idpConfig
   if (openapeUrl) {
     idpConfig = { idpUrl: openapeUrl, record: { version: 'ddisa1', idp: openapeUrl, raw: `v=ddisa1; idp=${openapeUrl}` } }
   } else {
-    idpConfig = await discoverIdP(email)
+    idpConfig = await discoverIdP(email, { fallbackIdpUrl: fallbackIdpUrl || undefined })
   }
 
   if (!idpConfig) {

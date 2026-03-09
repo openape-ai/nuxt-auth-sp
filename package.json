@@ -44,12 +44,15 @@
   "devDependencies": {
     "@antfu/eslint-config": "^7.6.1",
     "@changesets/cli": "^2.30.0",
-    "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/module-builder": "^1.0.2",
+    "@nuxt/ui": "^4.5.1",
     "@types/node": "^22.19.13",
     "eslint": "^9.39.3",
     "nuxt": "^4.3.1",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4",
+    "vue": "^3.5.30",
     "vue-tsc": "^3.2.5"
   },
   "engines": {

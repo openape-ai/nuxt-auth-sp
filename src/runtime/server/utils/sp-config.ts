@@ -8,7 +8,7 @@ const FLOW_COOKIE = 'openape-flow'
 export function getSpConfig() {
   const config = useRuntimeConfig()
   return {
-    spId: (config.openapeSp.spId || 'sp.example.com').trim(),
+    clientId: (config.openapeSp.clientId || 'sp.example.com').trim(),
     openapeUrl: (config.openapeSp.openapeUrl || '').trim(),
     spName: (config.openapeSp.spName || 'OpenApe Service Provider').trim(),
     fallbackIdpUrl: (config.openapeSp.fallbackIdpUrl || 'https://id.openape.at').trim(),

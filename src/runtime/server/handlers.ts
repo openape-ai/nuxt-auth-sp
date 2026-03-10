@@ -24,7 +24,7 @@ export interface SPManifestHandlerOptions {
 export function defineOpenApeLoginHandler(options: LoginHandlerOptions) {
   return defineEventHandler(async (event) => {
     const body = await readBody<{ email: string }>(event)
-    const { spId, openapeUrl, fallbackIdpUrl } = getSpConfig()
+    const { clientId, openapeUrl, fallbackIdpUrl } = getSpConfig()
     const origin = getRequestURL(event).origin
     const redirectUri = `${origin}${options.callbackPath}`
 
@@ -50,7 +50,7 @@ export function defineOpenApeLoginHandler(options: LoginHandlerOptions) {
     }
 
     const { url, flowState } = await createAuthorizationURL(idpConfig, {
-      spId,
+      clientId,
       redirectUri,
       email,
     })
@@ -65,7 +65,7 @@ export function defineOpenApeCallbackHandler(options: CallbackHandlerOptions) {
   return defineEventHandler(async (event) => {
     const query = getQuery(event)
     const { code, state, error, error_description } = query as Record<string, string>
-    const { spId } = getSpConfig()
+    const { clientId } = getSpConfig()
     const origin = getRequestURL(event).origin
 
     if (error) {
@@ -106,7 +106,7 @@ export function defineOpenApeCallbackHandler(options: CallbackHandlerOptions) {
         code,
         state,
         flowState,
-        spId,
+        clientId,
         redirectUri,
       })
 
@@ -126,10 +126,10 @@ export function defineOpenApeCallbackHandler(options: CallbackHandlerOptions) {
 
 export function defineOpenApeSPManifestHandler(options: SPManifestHandlerOptions) {
   return defineEventHandler((event) => {
-    const { spId, spName } = getSpConfig()
+    const { clientId, spName } = getSpConfig()
     const origin = getRequestURL(event).origin
     return createSPManifest({
-      sp_id: spId,
+      client_id: clientId,
       name: spName,
       redirect_uris: [`${origin}${options.callbackPath}`],
       description: options.description || `${spName} — OpenApe Service Provider`,

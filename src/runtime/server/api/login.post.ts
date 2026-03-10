@@ -4,7 +4,7 @@ import { getSpConfig, saveFlowState } from '../utils/sp-config'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<{ email: string }>(event)
-  const { spId, openapeUrl, fallbackIdpUrl } = getSpConfig()
+  const { clientId, openapeUrl, fallbackIdpUrl } = getSpConfig()
   const origin = getRequestURL(event).origin
   const redirectUri = `${origin}/api/callback`
 
@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const { url, flowState } = await createAuthorizationURL(idpConfig, {
-    spId,
+    clientId,
     redirectUri,
     email,
   })

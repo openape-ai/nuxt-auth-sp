@@ -4,7 +4,7 @@ import { getSpConfig } from '../../utils/sp-config'
 
 export default defineEventHandler((event) => {
   const config = useRuntimeConfig()
-  const { spId, spName } = getSpConfig()
+  const { clientId, spName } = getSpConfig()
   const origin = getRequestURL(event).origin
   const manifest = (config.openapeSp as Record<string, unknown>).manifest as Record<string, unknown> | undefined
 
@@ -21,7 +21,7 @@ export default defineEventHandler((event) => {
       ...(manifest?.service as Record<string, unknown> || {}),
     },
     auth: {
-      ddisa_domain: spId,
+      ddisa_domain: clientId,
       supported_methods: ['ddisa'],
       ...(manifest?.auth as Record<string, unknown> || {}),
     },

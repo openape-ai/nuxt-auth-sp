@@ -3,10 +3,10 @@ import { createSPManifest } from '@openape/auth'
 import { getSpConfig } from '../../utils/sp-config'
 
 export default defineEventHandler((event) => {
-  const { spId, spName } = getSpConfig()
+  const { clientId, spName } = getSpConfig()
   const origin = getRequestURL(event).origin
   return createSPManifest({
-    sp_id: spId,
+    client_id: clientId,
     name: spName,
     redirect_uris: [`${origin}/api/callback`],
     description: `${spName} — OpenApe Service Provider`,

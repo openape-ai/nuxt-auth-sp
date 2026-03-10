@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     preference: 'dark',
   },
   openapeSp: {
-    spId: 'localhost:3001',
+    clientId: 'localhost:3001',
     spName: 'Playground SP',
     sessionSecret: 'playground-secret-at-least-32-characters-long',
     openapeUrl: 'http://localhost:3000',

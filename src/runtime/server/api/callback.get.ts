@@ -6,7 +6,7 @@ import { getSpSession } from '../utils/sp-session'
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
   const { code, state, error, error_description } = query as Record<string, string>
-  const { spId } = getSpConfig()
+  const { clientId } = getSpConfig()
   const origin = getRequestURL(event).origin
   const redirectUri = `${origin}/api/callback`
 
@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
       code,
       state,
       flowState,
-      spId,
+      clientId,
       redirectUri,
     })
 

@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   modules: ['@openape/nuxt-auth-sp'],
 
   openapeSp: {
-    spId: 'sp.example.com',
+    clientId: 'sp.example.com',
     spName: 'My Service',
     sessionSecret: 'your-secret-min-32-chars...',
   },
@@ -25,7 +25,7 @@ export default defineNuxtConfig({
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `spId` | `string` | — | **Required.** Service Provider identifier (typically your domain) |
+| `clientId` | `string` | — | **Required.** Service Provider identifier (typically your domain) |
 | `spName` | `string` | `'OpenApe Service Provider'` | Display name shown during authorization |
 | `sessionSecret` | `string` | `'change-me-sp-secret-...'` | Session encryption key |
 | `openapeUrl` | `string` | — | Override IdP URL (bypasses DNS discovery) |
@@ -89,7 +89,7 @@ export default defineNuxtConfig({
   modules: ['@openape/nuxt-auth-sp'],
 
   openapeSp: {
-    spId: 'localhost:3001',
+    clientId: 'localhost:3001',
     spName: 'My App',
     sessionSecret: 'at-least-32-characters-long-secret-here',
   },

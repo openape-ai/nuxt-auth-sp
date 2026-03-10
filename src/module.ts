@@ -42,7 +42,7 @@ export interface ManifestConfig {
 }
 
 export interface ModuleOptions {
-  spId: string
+  clientId: string
   spName: string
   sessionSecret: string
   openapeUrl: string
@@ -59,7 +59,7 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'openapeSp',
   },
   defaults: {
-    spId: '',
+    clientId: '',
     spName: 'OpenApe Service Provider',
     sessionSecret: 'change-me-sp-secret-at-least-32-chars-long',
     openapeUrl: '',
@@ -85,10 +85,10 @@ export default defineNuxtModule<ModuleOptions>({
         logger.info('Auto-generated sessionSecret for dev mode')
       }
 
-      if (!config.spId) {
+      if (!config.clientId) {
         const port = nuxt.options.devServer?.port || 3000
-        config.spId = `localhost:${port}`
-        logger.info(`Auto-derived spId: ${config.spId}`)
+        config.clientId = `localhost:${port}`
+        logger.info(`Auto-derived clientId: ${config.clientId}`)
       }
     }
 
@@ -98,8 +98,8 @@ export default defineNuxtModule<ModuleOptions>({
       if (config.sessionSecret === 'change-me-sp-secret-at-least-32-chars-long') {
         logger.warn('Using default sessionSecret in production! Set NUXT_OPENAPE_SP_SESSION_SECRET.')
       }
-      if (!config.spId) {
-        logger.warn('spId is empty in production! Set openapeSp.spId or NUXT_OPENAPE_SP_SP_ID.')
+      if (!config.clientId) {
+        logger.warn('clientId is empty in production! Set openapeSp.clientId or NUXT_OPENAPE_SP_CLIENT_ID.')
       }
     }
 

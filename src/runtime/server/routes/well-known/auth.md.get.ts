@@ -2,7 +2,7 @@ import { defineEventHandler, getRequestURL, setResponseHeader } from 'h3'
 import { getSpConfig } from '../../utils/sp-config'
 
 export default defineEventHandler((event) => {
-  const { spId, spName, fallbackIdpUrl } = getSpConfig()
+  const { clientId, spName, fallbackIdpUrl } = getSpConfig()
   const origin = getRequestURL(event).origin
 
   setResponseHeader(event, 'Content-Type', 'text/markdown; charset=utf-8')
@@ -13,7 +13,7 @@ export default defineEventHandler((event) => {
 DDISA v1 (DNS-Discoverable Identity & Service Authorization)
 
 ## Service Provider
-- **SP ID:** \`${spId}\`
+- **SP ID:** \`${clientId}\`
 - **Origin:** \`${origin}\`
 
 ## Endpoints

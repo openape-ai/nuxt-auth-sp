@@ -29,7 +29,7 @@
     "test": "vitest run --passWithNoTests",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "npm pack --dry-run && npm publish --provenance --access public"
+    "release": "changeset publish"
   },
   "dependencies": {
     "@nuxt/kit": "^3.21.1",
